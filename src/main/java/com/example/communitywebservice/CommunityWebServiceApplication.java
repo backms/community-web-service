@@ -2,6 +2,8 @@ package com.example.communitywebservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class CommunityWebServiceApplication {
@@ -10,4 +12,9 @@ public class CommunityWebServiceApplication {
         SpringApplication.run(CommunityWebServiceApplication.class, args);
     }
 
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
