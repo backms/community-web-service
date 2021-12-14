@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService{
         UserEntity userEntity = mapper.map(userDto, UserEntity.class);
         userEntity.setEncryptedPwd(bCryptPasswordEncoder.encode(userDto.getPwd()));
 
-        userRepository.save(userEntity);
+        UserDto joinInfo = mapper.map(userEntity, UserDto.class);
 
-        return null;
+        return joinInfo;
     }
 }
