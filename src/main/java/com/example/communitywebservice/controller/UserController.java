@@ -1,6 +1,7 @@
 package com.example.communitywebservice.controller;
 
 import com.example.communitywebservice.dto.UserDto;
+import com.example.communitywebservice.jpa.UserEntity;
 import com.example.communitywebservice.service.UserService;
 import com.example.communitywebservice.vo.RequestUser;
 import com.example.communitywebservice.vo.ResponseUser;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -36,6 +40,19 @@ public class UserController {
         ResponseUser responseUser = mapper.map(userDto, ResponseUser.class);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<ResponseUser>> getUser() {
+
+        Iterable<UserEntity> userList = userService.getUserByAll();
+
+        List<ResponseUser> result = new ArrayList<>();
+        userList.forEach( v -> {
+            result.add(new ModelMapper().map(v, ResponseUser.class));
+        });
+
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
 }
