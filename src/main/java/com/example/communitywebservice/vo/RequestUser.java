@@ -10,10 +10,6 @@ import javax.validation.constraints.Size;
 public class RequestUser {
 
     @NotNull
-    @Size(min=3)
-    private String userId;
-
-    @NotNull
     @Size(min=6)
     private String name;
 

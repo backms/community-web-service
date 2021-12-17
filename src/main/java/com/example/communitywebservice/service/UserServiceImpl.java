@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -25,6 +26,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public UserDto userRegister(UserDto userDto) {
 
+        userDto.setUserId(UUID.randomUUID().toString());
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         UserEntity userEntity = mapper.map(userDto, UserEntity.class);
@@ -43,9 +45,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserDto getUserById(String id) {
+    public UserDto getUserById(String userId) {
 
-        UserEntity userEntity = userRepository.findById(id);
+        UserEntity userEntity = userRepository.findById(userId);
 
         if(userEntity == null) {
             throw new UsernameNotFoundException("User Not Found");
