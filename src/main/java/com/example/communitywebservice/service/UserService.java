@@ -7,5 +7,5 @@ public interface UserService {
     UserDto userRegister(UserDto userDto);
 
     Iterable<UserEntity> getUserByAll();
-    UserDto getUserById(String userId);
+    UserDto getUserByUserId(String userId);
 }

@@ -21,8 +21,11 @@ import java.util.List;
 @RequestMapping("/")
 public class UserController {
 
-    @Autowired
-    UserService userService;
+    private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/health_check")
     public String status() {
@@ -59,7 +62,7 @@ public class UserController {
     @GetMapping("/users/{userId}")
     public ResponseEntity<ResponseUser> getUserById(@PathVariable String userId){
 
-        UserDto userDto = userService.getUserById(userId);
+        UserDto userDto = userService.getUserByUserId(userId);
 
         ResponseUser responseUser = new ModelMapper().map(userDto, ResponseUser.class);
 

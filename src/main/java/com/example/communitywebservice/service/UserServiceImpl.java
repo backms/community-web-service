@@ -6,27 +6,27 @@ import com.example.communitywebservice.jpa.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService{
 
-    @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    public UserServiceImpl(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
+
     @Override
     public UserDto userRegister(UserDto userDto) {
 
-        userDto.setUserId(UUID.randomUUID().toString());
+//        userDto.setUserId(UUID.randomUUID().toString());
         ModelMapper mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         UserEntity userEntity = mapper.map(userDto, UserEntity.class);
@@ -45,9 +45,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserDto getUserById(String userId) {
+    public UserDto getUserByUserId(String userId) {
 
-        UserEntity userEntity = userRepository.findById(userId);
+        UserEntity userEntity = userRepository.findByUserId(userId);
 
         if(userEntity == null) {
             throw new UsernameNotFoundException("User Not Found");

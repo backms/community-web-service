@@ -11,6 +11,10 @@ public class RequestUser {
 
     @NotNull
     @Size(min=6)
+    private String userId;
+
+    @NotNull
+    @Size(min=6)
     private String name;
 
     @NotNull(message = "Please Write E-Mail")
