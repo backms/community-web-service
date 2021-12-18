@@ -1,15 +1,14 @@
-package com.example.communitywebservice.service;
+package com.example.communitywebservice.user.service;
 
-import com.example.communitywebservice.dto.UserDto;
-import com.example.communitywebservice.jpa.UserEntity;
-import com.example.communitywebservice.jpa.UserRepository;
+import com.example.communitywebservice.user.dto.UserDto;
+import com.example.communitywebservice.user.jpa.UserEntity;
+import com.example.communitywebservice.user.jpa.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService{

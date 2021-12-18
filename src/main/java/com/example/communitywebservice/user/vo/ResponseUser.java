@@ -1,4 +1,4 @@
-package com.example.communitywebservice.vo;
+package com.example.communitywebservice.user.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

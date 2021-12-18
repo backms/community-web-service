@@ -1,4 +1,4 @@
-package com.example.communitywebservice.jpa;
+package com.example.communitywebservice.user.jpa;
 
 import lombok.Data;
 

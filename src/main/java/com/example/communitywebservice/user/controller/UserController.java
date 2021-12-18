@@ -1,16 +1,14 @@
-package com.example.communitywebservice.controller;
+package com.example.communitywebservice.user.controller;
 
-import com.example.communitywebservice.dto.UserDto;
-import com.example.communitywebservice.jpa.UserEntity;
-import com.example.communitywebservice.service.UserService;
-import com.example.communitywebservice.vo.RequestUser;
-import com.example.communitywebservice.vo.ResponseUser;
+import com.example.communitywebservice.user.dto.UserDto;
+import com.example.communitywebservice.user.jpa.UserEntity;
+import com.example.communitywebservice.user.service.UserService;
+import com.example.communitywebservice.user.vo.RequestUser;
+import com.example.communitywebservice.user.vo.ResponseUser;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

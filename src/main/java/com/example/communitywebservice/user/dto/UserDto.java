@@ -1,4 +1,4 @@
-package com.example.communitywebservice.dto;
+package com.example.communitywebservice.user.dto;
 
 import lombok.Data;
 

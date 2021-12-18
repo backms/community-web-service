@@ -1,4 +1,4 @@
-package com.example.communitywebservice.vo;
+package com.example.communitywebservice.user.vo;
 
 import lombok.Data;
 
