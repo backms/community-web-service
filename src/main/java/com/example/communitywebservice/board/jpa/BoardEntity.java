@@ -23,7 +23,9 @@ public class BoardEntity {
     @Column(nullable = false)
     private String boardContent;
     @Column(nullable = false)
-    private String boardWriter;
+    private String writer;
+    @Column(nullable = false)
+    private String category;
 
     @Column(nullable = false, updatable = false, insertable = false)
     @ColumnDefault(value = "CURRENT_TIMESTAMP")
