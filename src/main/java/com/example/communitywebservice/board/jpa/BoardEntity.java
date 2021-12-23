@@ -4,14 +4,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@Entity
+@Table(name = "board")
 public class BoardEntity {
 
     @Id

@@ -3,7 +3,7 @@ package com.example.communitywebservice.board.vo;
 import lombok.Data;
 
 @Data
-public class BoardResponse {
+public class ResponseBoard {
 
     private String boardId;
     private String boardTitle;
