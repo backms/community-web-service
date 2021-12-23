@@ -28,4 +28,11 @@ public class BoardServiceImpl implements BoardService {
 
         return registedBoard;
     }
+
+    @Override
+    public Iterable<BoardEntity> getBoardByAll() {
+        return boardRepository.findAll();
+    }
+
+
 }
