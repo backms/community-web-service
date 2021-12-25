@@ -9,4 +9,6 @@ public interface BoardService {
 
     Iterable<BoardEntity> getBoardByAll();
 
+    BoardDto getBoardById(String writer);
+
 }

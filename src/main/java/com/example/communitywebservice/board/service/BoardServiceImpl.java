@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class BoardServiceImpl implements BoardService {
 
@@ -34,5 +36,13 @@ public class BoardServiceImpl implements BoardService {
         return boardRepository.findAll();
     }
 
+    @Override
+    public BoardDto getBoardById(String writer) {
 
+        BoardEntity boardEntity = boardRepository.findByWriter(writer);
+
+        BoardDto boardDto = new ModelMapper().map(boardEntity, BoardDto.class);
+
+        return boardDto;
+    }
 }
