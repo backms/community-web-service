@@ -58,13 +58,27 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity<ResponseUser> getUserById(@PathVariable String userId){
+    public ResponseEntity<ResponseUser> getUserById(@PathVariable("userId") String userId){
 
         UserDto userDto = userService.getUserByUserId(userId);
 
         ResponseUser responseUser = new ModelMapper().map(userDto, ResponseUser.class);
 
         return ResponseEntity.status(HttpStatus.OK).body(responseUser);
+    }
+
+    @PutMapping("/users/{userId}")
+    public ResponseEntity<ResponseUser> editUserById(@PathVariable("userId") String userId, @RequestBody RequestUser requestUser){
+
+        UserDto userDto = new ModelMapper().map(requestUser, UserDto.class);
+        userDto.setUserId(userId);
+
+        userService.editUserByUserId(userDto);
+
+        ResponseUser responseUser = new ModelMapper().map(userDto, ResponseUser.class);
+
+        return ResponseEntity.status(HttpStatus.OK).body(responseUser);
+
     }
 
 }

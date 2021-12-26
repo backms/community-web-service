@@ -8,4 +8,5 @@ public interface UserService {
 
     Iterable<UserEntity> getUserByAll();
     UserDto getUserByUserId(String userId);
+    UserDto editUserByUserId(UserDto userDto);
 }

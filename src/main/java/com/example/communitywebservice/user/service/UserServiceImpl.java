@@ -56,4 +56,15 @@ public class UserServiceImpl implements UserService{
 
         return userDto;
     }
+
+    @Override
+    public UserDto editUserByUserId(UserDto userDto) {
+
+        UserEntity userEntity = new ModelMapper().map(userDto, UserEntity.class);
+        userRepository.save(userEntity);
+
+        UserDto resultValue = new ModelMapper().map(userEntity, UserDto.class);
+
+        return resultValue;
+    }
 }
