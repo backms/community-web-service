@@ -70,8 +70,12 @@ public class UserController {
     @PutMapping("/users/{userId}")
     public ResponseEntity<ResponseUser> editUserById(@PathVariable("userId") String userId, @RequestBody RequestUser requestUser){
 
-        UserDto userDto = new ModelMapper().map(requestUser, UserDto.class);
+        UserDto userDto = userService.getUserByUserId(userId);
+        userDto.setEmail(requestUser.getEmail());
+        userDto.setName(requestUser.getName());
         userDto.setUserId(userId);
+        userDto.setEncryptedPwd(userDto.getEncryptedPwd());
+        userDto.setJoinDate(userDto.getJoinDate());
 
         userService.editUserByUserId(userDto);
 
