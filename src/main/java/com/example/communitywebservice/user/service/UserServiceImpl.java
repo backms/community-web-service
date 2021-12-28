@@ -67,4 +67,11 @@ public class UserServiceImpl implements UserService{
 
         return resultValue;
     }
+
+    @Override
+    public void deleteByUserId(String userId) {
+        userRepository.deleteByUserId(userId);
+    }
+
+
 }
