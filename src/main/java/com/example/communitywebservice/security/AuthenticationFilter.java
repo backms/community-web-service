@@ -1,8 +1,10 @@
 package com.example.communitywebservice.security;
 
+import com.example.communitywebservice.user.service.UserService;
 import com.example.communitywebservice.user.vo.RequestLogin;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,6 +20,15 @@ import java.util.ArrayList;
 
 @Slf4j
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
+    private UserService userService;
+    private Environment env;
+
+    public AuthenticationFilter(AuthenticationManager authenticationManager, UserService userService, Environment env){
+        super.setAuthenticationManager(authenticationManager);
+        this.userService = userService;
+        this.env = env;
+    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
