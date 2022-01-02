@@ -21,5 +21,7 @@ public class UserEntity {
     private String email;
     @Column(nullable = false)
     private String encryptedPwd;
+    @Column(nullable = false)
+    private String userNo;
 
 }
