@@ -9,5 +9,6 @@ public class ResponseBoard {
     private String boardContent;
     private String writer;
     private String category;
+    private int hitsCnt;
 
 }
