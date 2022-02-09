@@ -9,5 +9,6 @@ public class BoardDto {
     private String boardContent;
     private String writer;
     private String category;
+    private int hitsCnt;
 
 }

@@ -22,6 +22,8 @@ public class BoardServiceImpl implements BoardService {
     public BoardDto boardRegister(BoardDto boardDto) {
 
         ModelMapper mapper = new ModelMapper();
+
+        boardDto.setHitsCnt(1);
         BoardEntity boardEntity = mapper.map(boardDto, BoardEntity.class);
 
         boardRepository.save(boardEntity);
