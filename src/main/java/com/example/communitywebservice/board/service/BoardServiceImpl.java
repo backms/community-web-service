@@ -45,6 +45,9 @@ public class BoardServiceImpl implements BoardService {
 
         BoardDto boardDto = new ModelMapper().map(boardEntity, BoardDto.class);
 
+        boardEntity.setHitsCnt(boardDto.getHitsCnt() + 1);
+        boardRepository.save(boardEntity);
+
         return boardDto;
     }
 }
